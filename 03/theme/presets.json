@@ -1,0 +1,28 @@
+{
+  "Presets": [
+    {
+      "Name": "Default",
+      "TitleFont": "Merriweather Sans",
+      "BodyFont": "Merriweather",
+      "Appearance": "light",
+      "DarkBodyTextColor": "#000000",
+      "LightBodyTextColor": "#ffffff",
+      "DarkTitleTextColor": "#000000",
+      "LightTitleTextColor": "#ffffff",
+      "DarkBackgroundColor": "transparent",
+      "LightBackgroundColor": "transparent",
+      "LightBgGradient": [
+        "#ffffff",
+        "#ffffff",
+        "#ffffff"
+      ],
+      "DarkBgGradient": [
+        "#000000",
+        "#292929",
+        "#525252"
+      ],
+      "DarkAccent1": "#000000",
+      "LightAccent1": "#FFFFFF"
+    }
+  ]
+}
