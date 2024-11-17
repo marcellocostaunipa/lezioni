@@ -1,0 +1,17 @@
+{
+  "Version": 1,
+  "Name": "da72a300",
+  "Author": "Marcello Costa",
+  "ShortDescription": "",
+  "LongDescription": "",
+  "Css": "theme.css",
+  "TitleFont": "Merriweather Sans",
+  "BodyFont": "Merriweather",
+  "CssClasses": "variable-size-headings",
+  "Layouts": [
+    {
+      "Name": "Cover",
+      "Classes": "invert"
+    }
+  ]
+}
