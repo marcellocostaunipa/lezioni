@@ -8,13 +8,11 @@ Modern CSS offers powerful layout systems that make it easier to create complex,
 
 Our portfolio uses a container pattern to create a centered, width-constrained layout:
 
-\`\`\`css
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 var(--spacing);
-}
-\`\`\`
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing);
+    }
 
 This pattern:
 - Sets a maximum width (`max-width: 1200px`)
@@ -23,25 +21,23 @@ This pattern:
 
 We use this container throughout our HTML:
 
-\`\`\`html
-<header class="header">
-  <div class="container">
-    <!-- Header content -->
-  </div>
-</header>
+    <header class="header">
+      <div class="container">
+        <!-- Header content -->
+      </div>
+    </header>
 
-<main class="main">
-  <div class="container">
-    <!-- Main content -->
-  </div>
-</main>
+    <main class="main">
+      <div class="container">
+        <!-- Main content -->
+      </div>
+    </main>
 
-<footer class="footer">
-  <div class="container">
-    <!-- Footer content -->
-  </div>
-</footer>
-\`\`\`
+    <footer class="footer">
+      <div class="container">
+        <!-- Footer content -->
+      </div>
+    </footer>
 
 ## Flexbox Layout
 
@@ -49,20 +45,18 @@ Flexbox is a one-dimensional layout method designed for laying out items in rows
 
 ### Card Component with Flexbox
 
-\`\`\`css
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing);
-}
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing);
+    }
 
-.card__footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-top: auto;
-}
-\`\`\`
+    .card__footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+    }
 
 This creates a card where:
 - Content flows vertically (`flex-direction: column`)
@@ -72,13 +66,11 @@ This creates a card where:
 
 ### Button Component with Flexbox
 
-\`\`\`css
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: calc(var(--spacing) / 2);
-}
-\`\`\`
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: calc(var(--spacing) / 2);
+    }
 
 This creates a button where:
 - Text and icon are aligned vertically center
@@ -86,13 +78,11 @@ This creates a button where:
 
 ### Modal Header with Flexbox
 
-\`\`\`css
-.modal__header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-\`\`\`
+    .modal__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
 This creates a header where:
 - Title and close button are aligned vertically center
@@ -102,14 +92,12 @@ This creates a header where:
 
 CSS Grid is a two-dimensional layout system designed for laying out items in rows and columns. Our portfolio uses Grid for the portfolio card layout:
 
-\`\`\`css
-.portfolio__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: var(--spacing);
-  margin-bottom: calc(var(--spacing)*2);
-}
-\`\`\`
+    .portfolio__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: var(--spacing);
+      margin-bottom: calc(var(--spacing)*2);
+    }
 
 This creates a responsive grid where:
 - Columns automatically fit as many 350px-minimum-width items as possible
@@ -127,19 +115,15 @@ Our portfolio implements responsive design to ensure it looks good on all device
 
 ### Viewport Meta Tag
 
-\`\`\`html
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-\`\`\`
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 This tag ensures the page is rendered at the device's width with a 1:1 scale.
 
 ### Fluid Typography
 
-\`\`\`css
-.header__title {
-  font-size: clamp(2.5rem, 5vw, 4rem);
-}
-\`\`\`
+    .header__title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+    }
 
 The `clamp()` function creates responsive typography that:
 - Has a minimum size of 2.5rem
@@ -148,13 +132,11 @@ The `clamp()` function creates responsive typography that:
 
 ### Responsive Images
 
-\`\`\`css
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-\`\`\`
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
 
 This ensures images never overflow their containers and maintain their aspect ratio.
 
@@ -162,54 +144,52 @@ This ensures images never overflow their containers and maintain their aspect ra
 
 Our portfolio uses media queries to adjust layouts for different screen sizes:
 
-\`\`\`css
-@media (max-width: 768px) {
-  .header {
-    padding: calc(var(--spacing) * 1.5) 0;
-  }
+    @media (max-width: 768px) {
+      .header {
+        padding: calc(var(--spacing) * 1.5) 0;
+      }
 
-  .header__title {
-    font-size: 2.5rem;
-  }
+      .header__title {
+        font-size: 2.5rem;
+      }
 
-  .header__description {
-    font-size: 1.125rem;
-  }
+      .header__description {
+        font-size: 1.125rem;
+      }
 
-  .portfolio__grid {
-    grid-template-columns: 1fr;
-    gap: calc(var(--spacing) / 2);
-  }
+      .portfolio__grid {
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing) / 2);
+      }
 
-  .modal {
-    width: 95vw;
-    height: 95vh;
-  }
+      .modal {
+        width: 95vw;
+        height: 95vh;
+      }
 
-  .modal__header {
-    padding: calc(var(--spacing) / 2);
-  }
+      .modal__header {
+        padding: calc(var(--spacing) / 2);
+      }
 
-  .modal__body {
-    padding: 0;
-  }
-}
+      .modal__body {
+        padding: 0;
+      }
+    }
 
-@media (max-width: 480px) {
-  .container {
-    padding: 0 calc(var(--spacing) / 2);
-  }
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 calc(var(--spacing) / 2);
+      }
 
-  .card__content {
-    padding: calc(var(--spacing) / 2);
-  }
+      .card__content {
+        padding: calc(var(--spacing) / 2);
+      }
 
-  .btn {
-    padding: 0.625rem 1.25rem;
-    font-size: 0.875rem;
-  }
-}
-\`\`\`
+      .btn {
+        padding: 0.625rem 1.25rem;
+        font-size: 0.875rem;
+      }
+    }
 
 These media queries:
 - Adjust spacing and font sizes for smaller screens
@@ -220,17 +200,15 @@ These media queries:
 
 The portfolio grid automatically adjusts based on screen width:
 
-\`\`\`css
-.portfolio__grid {
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-}
+    .portfolio__grid {
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    }
 
-@media (max-width: 768px) {
-  .portfolio__grid {
-    grid-template-columns: 1fr;
-  }
-}
-\`\`\`
+    @media (max-width: 768px) {
+      .portfolio__grid {
+        grid-template-columns: 1fr;
+      }
+    }
 
 On larger screens, it shows multiple columns. On smaller screens, it switches to a single column.
 
@@ -238,19 +216,17 @@ On larger screens, it shows multiple columns. On smaller screens, it switches to
 
 Our portfolio maintains consistent image proportions using aspect ratio:
 
-\`\`\`css
-.card__preview {
-  position: relative;
-  overflow: hidden;
-  aspect-ratio: 3 / 2;
-}
+    .card__preview {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 3 / 2;
+    }
 
-.card__image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-\`\`\`
+    .card__image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
 This ensures all card images have a 3:2 aspect ratio, regardless of the original image dimensions.
 
@@ -258,27 +234,25 @@ This ensures all card images have a 3:2 aspect ratio, regardless of the original
 
 The modal adapts to different screen sizes:
 
-\`\`\`css
-.modal {
-  width: 90vw;
-  height: 90vh;
-}
+    .modal {
+      width: 90vw;
+      height: 90vh;
+    }
 
-@media (max-width: 768px) {
-  .modal {
-    width: 95vw;
-    height: 95vh;
-  }
+    @media (max-width: 768px) {
+      .modal {
+        width: 95vw;
+        height: 95vh;
+      }
 
-  .modal__header {
-    padding: calc(var(--spacing) / 2);
-  }
+      .modal__header {
+        padding: calc(var(--spacing) / 2);
+      }
 
-  .modal__body {
-    padding: 0;
-  }
-}
-\`\`\`
+      .modal__body {
+        padding: 0;
+      }
+    }
 
 On smaller screens, the modal takes up more screen space and reduces padding.
 
@@ -286,21 +260,19 @@ On smaller screens, the modal takes up more screen space and reduces padding.
 
 Our portfolio includes accessibility considerations for responsive design:
 
-\`\`\`css
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
 
-  html {
-    scroll-behavior: auto;
-  }
-}
-\`\`\`
+      html {
+        scroll-behavior: auto;
+      }
+    }
 
 This media query respects the user's preference for reduced motion, which is important for users who experience motion sickness or have vestibular disorders.
 

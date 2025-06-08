@@ -9,14 +9,12 @@ JavaScript is the programming language of the web that allows us to create dynam
 JavaScript runs in the browser and interacts with the Document Object Model (DOM). Our portfolio includes JavaScript in two ways:
 
 1. External library (p5.js):
-\`\`\`html
-<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-\`\`\`
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
 
 2. Our custom script:
-\`\`\`html
-<script src="js/script.js"></script>
-\`\`\`
+
+    <script src="js/script.js"></script>
 
 The script tag at the end of the body ensures the DOM is fully loaded before our JavaScript runs.
 
@@ -24,35 +22,33 @@ The script tag at the end of the body ensures the DOM is fully loaded before our
 
 Our portfolio's JavaScript is well-organized with clear sections and comments:
 
-\`\`\`javascript
-// ==========================================================================
-// GLOBAL VARIABLES - Store important elements and state
-// ==========================================================================
+    // ==========================================================================
+    // GLOBAL VARIABLES - Store important elements and state
+    // ==========================================================================
 
-// ==========================================================================
-// INITIALIZATION - Set up the application when page loads
-// ==========================================================================
+    // ==========================================================================
+    // INITIALIZATION - Set up the application when page loads
+    // ==========================================================================
 
-// ==========================================================================
-// EVENT LISTENERS - Handle user interactions
-// ==========================================================================
+    // ==========================================================================
+    // EVENT LISTENERS - Handle user interactions
+    // ==========================================================================
 
-// ==========================================================================
-// MODAL FUNCTIONS - Open and close the sketch modal
-// ==========================================================================
+    // ==========================================================================
+    // MODAL FUNCTIONS - Open and close the sketch modal
+    // ==========================================================================
 
-// ==========================================================================
-// SKETCH MANAGEMENT - Load and cleanup p5.js sketches
-// ==========================================================================
+    // ==========================================================================
+    // SKETCH MANAGEMENT - Load and cleanup p5.js sketches
+    // ==========================================================================
 
-// ==========================================================================
-// P5.JS SKETCH CREATORS - Functions that return sketch functions
-// ==========================================================================
+    // ==========================================================================
+    // P5.JS SKETCH CREATORS - Functions that return sketch functions
+    // ==========================================================================
 
-// ==========================================================================
-// START THE APPLICATION - Initialize everything when DOM is ready
-// ==========================================================================
-\`\`\`
+    // ==========================================================================
+    // START THE APPLICATION - Initialize everything when DOM is ready
+    // ==========================================================================
 
 This organization:
 - Groups related functionality together
@@ -64,16 +60,14 @@ This organization:
 
 JavaScript uses variables to store and manage data. Our portfolio declares variables at the top:
 
-\`\`\`javascript
-// Modal elements
-let modal = null
-let modalTitle = null
-let sketchContainer = null
-let closeButton = null
+    // Modal elements
+    let modal = null
+    let modalTitle = null
+    let sketchContainer = null
+    let closeButton = null
 
-// Current p5 sketch instance
-let currentSketch = null
-\`\`\`
+    // Current p5 sketch instance
+    let currentSketch = null
 
 We use `let` for variables that might change value. These variables are:
 - Declared at the top for visibility
@@ -82,18 +76,16 @@ We use `let` for variables that might change value. These variables are:
 
 Later, we assign values to these variables:
 
-\`\`\`javascript
-function initializeApp() {
-  // Get references to important DOM elements
-  modal = document.getElementById("sketch-modal")
-  modalTitle = document.getElementById("modal-title")
-  sketchContainer = document.getElementById("sketch-container")
-  closeButton = document.getElementById("close-modal")
+    function initializeApp() {
+      // Get references to important DOM elements
+      modal = document.getElementById("sketch-modal")
+      modalTitle = document.getElementById("modal-title")
+      sketchContainer = document.getElementById("sketch-container")
+      closeButton = document.getElementById("close-modal")
 
-  // Set up event listeners
-  setupEventListeners()
-}
-\`\`\`
+      // Set up event listeners
+      setupEventListeners()
+    }
 
 ## Functions
 
@@ -101,44 +93,38 @@ Functions are reusable blocks of code. Our portfolio uses functions extensively:
 
 ### Function Declaration
 
-\`\`\`javascript
-function initializeApp() {
-  // Function body
-}
+    function initializeApp() {
+      // Function body
+    }
 
-function setupEventListeners() {
-  // Function body
-}
+    function setupEventListeners() {
+      // Function body
+    }
 
-function handleSketchButtonClick(event) {
-  // Function body
-}
-\`\`\`
+    function handleSketchButtonClick(event) {
+      // Function body
+    }
 
 ### Function Parameters
 
-\`\`\`javascript
-function handleSketchButtonClick(event) {
-  // Using the event parameter
-  const sketchId = event.currentTarget.getAttribute("data-sketch")
-}
+    function handleSketchButtonClick(event) {
+      // Using the event parameter
+      const sketchId = event.currentTarget.getAttribute("data-sketch")
+    }
 
-function openModal(sketchId, title) {
-  // Using multiple parameters
-  modalTitle.textContent = title
-  loadSketch(sketchId)
-}
-\`\`\`
+    function openModal(sketchId, title) {
+      // Using multiple parameters
+      modalTitle.textContent = title
+      loadSketch(sketchId)
+    }
 
 ### Function Return Values
 
-\`\`\`javascript
-function createParticleSystemSketch() {
-  return (p) => {
-    // Function that creates a p5.js sketch
-  }
-}
-\`\`\`
+    function createParticleSystemSketch() {
+      return (p) => {
+        // Function that creates a p5.js sketch
+      }
+    }
 
 This function returns another function, demonstrating higher-order functions in JavaScript.
 
@@ -148,30 +134,24 @@ JavaScript can interact with HTML elements through the DOM API. Our portfolio us
 
 ### Selecting Elements
 
-\`\`\`javascript
-modal = document.getElementById("sketch-modal")
-const sketchButtons = document.querySelectorAll("[data-sketch]")
-\`\`\`
+    modal = document.getElementById("sketch-modal")
+    const sketchButtons = document.querySelectorAll("[data-sketch]")
 
 - `getElementById`: Selects a single element by its ID
 - `querySelectorAll`: Selects multiple elements matching a CSS selector
 
 ### Modifying Elements
 
-\`\`\`javascript
-modalTitle.textContent = title
-sketchContainer.innerHTML = ""
-\`\`\`
+    modalTitle.textContent = title
+    sketchContainer.innerHTML = ""
 
 - `textContent`: Changes the text content of an element
 - `innerHTML`: Changes the HTML content of an element
 
 ### Element Properties and Methods
 
-\`\`\`javascript
-modal.showModal()
-modal.close()
-\`\`\`
+    modal.showModal()
+    modal.close()
 
 - `showModal()`: Opens the dialog element as a modal
 - `close()`: Closes the dialog element
@@ -180,28 +160,26 @@ modal.close()
 
 JavaScript uses events to respond to user interactions. Our portfolio sets up event listeners:
 
-\`\`\`javascript
-function setupEventListeners() {
-  // Add click listeners to all sketch buttons
-  const sketchButtons = document.querySelectorAll("[data-sketch]")
-  for (let i = 0; i < sketchButtons.length; i++) {
-    sketchButtons[i].addEventListener("click", handleSketchButtonClick);
-  }
+    function setupEventListeners() {
+      // Add click listeners to all sketch buttons
+      const sketchButtons = document.querySelectorAll("[data-sketch]")
+      for (let i = 0; i < sketchButtons.length; i++) {
+        sketchButtons[i].addEventListener("click", handleSketchButtonClick);
+      }
 
-  // Close modal when close button is clicked
-  closeButton.addEventListener("click", closeModal)
+      // Close modal when close button is clicked
+      closeButton.addEventListener("click", closeModal)
 
-  // Close modal when clicking outside of it
-  modal.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      closeModal()
+      // Close modal when clicking outside of it
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) {
+          closeModal()
+        }
+      })
+
+      // Handle keyboard navigation
+      document.addEventListener("keydown", handleKeyboardInput)
     }
-  })
-
-  // Handle keyboard navigation
-  document.addEventListener("keydown", handleKeyboardInput)
-}
-\`\`\`
 
 This code:
 - Selects elements to attach listeners to
@@ -210,26 +188,24 @@ This code:
 
 ### Event Handler Functions
 
-\`\`\`javascript
-function handleSketchButtonClick(event) {
-  // Get the sketch ID from the button's data attribute
-  const sketchId = event.currentTarget.getAttribute("data-sketch")
+    function handleSketchButtonClick(event) {
+      // Get the sketch ID from the button's data attribute
+      const sketchId = event.currentTarget.getAttribute("data-sketch")
 
-  // Get the card title for the modal
-  const card = event.currentTarget.closest(".card")
-  const cardTitle = card.querySelector(".card__title").textContent
+      // Get the card title for the modal
+      const card = event.currentTarget.closest(".card")
+      const cardTitle = card.querySelector(".card__title").textContent
 
-  // Open the modal with this sketch
-  openModal(sketchId, cardTitle)
-}
+      // Open the modal with this sketch
+      openModal(sketchId, cardTitle)
+    }
 
-function handleKeyboardInput(event) {
-  // Close modal when Escape key is pressed
-  if (event.key === "Escape" && modal.open) {
-    closeModal()
-  }
-}
-\`\`\`
+    function handleKeyboardInput(event) {
+      // Close modal when Escape key is pressed
+      if (event.key === "Escape" && modal.open) {
+        closeModal()
+      }
+    }
 
 These functions:
 - Receive the event object as a parameter
@@ -238,13 +214,11 @@ These functions:
 
 ### Inline Arrow Functions
 
-\`\`\`javascript
-modal.addEventListener("click", (event) => {
-  if (event.target === modal) {
-    closeModal()
-  }
-})
-\`\`\`
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        closeModal()
+      }
+    })
 
 This uses an arrow function for a simple inline event handler.
 
@@ -254,52 +228,46 @@ JavaScript uses control flow statements to make decisions and repeat actions. Ou
 
 ### Conditional Statements
 
-\`\`\`javascript
-if (event.key === "Escape" && modal.open) {
-  closeModal()
-}
+    if (event.key === "Escape" && modal.open) {
+      closeModal()
+    }
 
-if (event.target === modal) {
-  closeModal()
-}
+    if (event.target === modal) {
+      closeModal()
+    }
 
-if (len > 4) {
-  // Draw branches
-}
-\`\`\`
+    if (len > 4) {
+      // Draw branches
+    }
 
 These `if` statements check conditions and execute code only when the condition is true.
 
 ### Switch Statement
 
-\`\`\`javascript
-switch (sketchId) {
-  case "particle-system":
-    currentSketch = new p5(createParticleSystemSketch(), sketchContainer)
-    break
-  case "fractal-tree":
-    currentSketch = new p5(createFractalTreeSketch(), sketchContainer)
-    break
-  // More cases...
-  default:
-    showSketchNotFound()
-}
-\`\`\`
+    switch (sketchId) {
+      case "particle-system":
+        currentSketch = new p5(createParticleSystemSketch(), sketchContainer)
+        break
+      case "fractal-tree":
+        currentSketch = new p5(createFractalTreeSketch(), sketchContainer)
+        break
+      // More cases...
+      default:
+        showSketchNotFound()
+    }
 
 This `switch` statement selects different code to run based on the value of `sketchId`.
 
 ### Loops
 
-\`\`\`javascript
-for (let i = 0; i < sketchButtons.length; i++) {
-  sketchButtons[i].addEventListener("click", handleSketchButtonClick);
-}
+    for (let i = 0; i < sketchButtons.length; i++) {
+      sketchButtons[i].addEventListener("click", handleSketchButtonClick);
+    }
 
-for (let i = 0; i < particles.length; i++) {
-  const particle = particles[i]
-  // Update and draw particle
-}
-\`\`\`
+    for (let i = 0; i < particles.length; i++) {
+      const particle = particles[i]
+      // Update and draw particle
+    }
 
 These `for` loops repeat code a specific number of times.
 
@@ -309,39 +277,35 @@ JavaScript uses various data structures to organize and manipulate data. Our por
 
 ### Arrays
 
-\`\`\`javascript
-const particles = []
+    const particles = []
 
-// Adding items to an array
-for (let i = 0; i < 100; i++) {
-  particles.push({
-    x: p.random(p.width),
-    y: p.random(p.height),
-    // More properties...
-  })
-}
+    // Adding items to an array
+    for (let i = 0; i < 100; i++) {
+      particles.push({
+        x: p.random(p.width),
+        y: p.random(p.height),
+        // More properties...
+      })
+    }
 
-// Iterating through an array
-for (let i = 0; i < particles.length; i++) {
-  const particle = particles[i]
-  // Use particle
-}
-\`\`\`
+    // Iterating through an array
+    for (let i = 0; i < particles.length; i++) {
+      const particle = particles[i]
+      // Use particle
+    }
 
 Arrays store ordered collections of items that can be accessed by index.
 
 ### Objects
 
-\`\`\`javascript
-particles.push({
-  x: p.random(p.width),
-  y: p.random(p.height),
-  vx: p.random(-2, 2),
-  vy: p.random(-2, 2),
-  size: p.random(3, 8),
-  color: p.color(p.random(255), p.random(255), p.random(255), 150),
-})
-\`\`\`
+    particles.push({
+      x: p.random(p.width),
+      y: p.random(p.height),
+      vx: p.random(-2, 2),
+      vy: p.random(-2, 2),
+      size: p.random(3, 8),
+      color: p.color(p.random(255), p.random(255), p.random(255), 150),
+    })
 
 Objects store collections of key-value pairs, allowing us to group related data together.
 
@@ -349,13 +313,11 @@ Objects store collections of key-value pairs, allowing us to group related data 
 
 Our portfolio initializes when the DOM is fully loaded:
 
-\`\`\`javascript
-document.addEventListener("DOMContentLoaded", () => {
-  // Initialize the main application
-  initializeApp()
-  console.log("All systems ready! 🚀")
-})
-\`\`\`
+    document.addEventListener("DOMContentLoaded", () => {
+      // Initialize the main application
+      initializeApp()
+      console.log("All systems ready! 🚀")
+    })
 
 This ensures our JavaScript only runs after the HTML document has been completely loaded and parsed.
 
