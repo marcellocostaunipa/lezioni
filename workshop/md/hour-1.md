@@ -27,22 +27,20 @@ HTML (HyperText Markup Language) is the backbone of any webpage. It defines the 
 
 Let's look at the basic structure of our portfolio website's HTML:
 
-\`\`\`html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Coding Portfolio</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
-</head>
-<body>
-    <!-- Content goes here -->
-    <script src="js/script.js"></script>
-</body>
-</html>
-\`\`\`
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Creative Coding Portfolio</title>
+        <link rel="stylesheet" href="css/styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+    </head>
+    <body>
+        <!-- Content goes here -->
+        <script src="js/script.js"></script>
+    </body>
+    </html>
 
 Let's break down each part:
 
@@ -61,23 +59,21 @@ Let's break down each part:
 
 Semantic HTML uses elements that clearly describe their meaning to browsers, developers, and assistive technologies. Our portfolio uses several semantic elements:
 
-\`\`\`html
-<header class="header">
-    <!-- Header content -->
-</header>
+    <header class="header">
+        <!-- Header content -->
+    </header>
 
-<main class="main">
-    <!-- Main content -->
-    <section class="portfolio">
-        <h2 class="portfolio__title">My Sketches</h2>
-        <!-- Portfolio content -->
-    </section>
-</main>
+    <main class="main">
+        <!-- Main content -->
+        <section class="portfolio">
+            <h2 class="portfolio__title">My Sketches</h2>
+            <!-- Portfolio content -->
+        </section>
+    </main>
 
-<footer class="footer">
-    <!-- Footer content -->
-</footer>
-\`\`\`
+    <footer class="footer">
+        <!-- Footer content -->
+    </footer>
 
 These semantic elements (`<header>`, `<main>`, `<section>`, `<footer>`) provide structure and meaning to our document.
 
@@ -87,26 +83,24 @@ Let's examine some key HTML elements used in our portfolio:
 
 #### Article Elements for Cards
 
-\`\`\`html
-<article class="card">
-    <div class="card__preview">
-        <img src="/img/sketch-01.png" 
-             alt="Particle System Animation" 
-             class="card__image">
-    </div>
-    <div class="card__content">
-        <h3 class="card__title">Particle System</h3>
-        <p class="card__description">Interactive particle system with physics simulation</p>
-    </div>
-    <div class="card__footer">
-        <button class="btn btn--primary" data-sketch="particle-system">
-            <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path d="M7 17L17 7M17 7H7M17 7V17"></path>
-            </svg>
-        </button>
-    </div>
-</article>
-\`\`\`
+    <article class="card">
+        <div class="card__preview">
+            <img src="/img/sketch-01.png" 
+                 alt="Particle System Animation" 
+                 class="card__image">
+        </div>
+        <div class="card__content">
+            <h3 class="card__title">Particle System</h3>
+            <p class="card__description">Interactive particle system with physics simulation</p>
+        </div>
+        <div class="card__footer">
+            <button class="btn btn--primary" data-sketch="particle-system">
+                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                </svg>
+            </button>
+        </div>
+    </article>
 
 This card uses:
 - `<article>`: A self-contained composition
@@ -118,26 +112,24 @@ This card uses:
 
 #### Dialog Element for Modal
 
-\`\`\`html
-<dialog class="modal" id="sketch-modal">
-    <div class="modal__content">
-        <header class="modal__header">
-            <h2 class="modal__title" id="modal-title">Sketch Title</h2>
-            <button class="modal__close" id="close-modal" aria-label="Close modal">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            </button>
-        </header>
-        <div class="modal__body">
-            <div class="modal__sketch-container" id="sketch-container">
-                <!-- p5.js sketch will be inserted here -->
+    <dialog class="modal" id="sketch-modal">
+        <div class="modal__content">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-title">Sketch Title</h2>
+                <button class="modal__close" id="close-modal" aria-label="Close modal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </header>
+            <div class="modal__body">
+                <div class="modal__sketch-container" id="sketch-container">
+                    <!-- p5.js sketch will be inserted here -->
+                </div>
             </div>
         </div>
-    </div>
-</dialog>
-\`\`\`
+    </dialog>
 
 This modal uses:
 - `<dialog>`: HTML5 dialog element for modal functionality
@@ -167,3 +159,4 @@ Take 10 minutes to review the complete HTML file and identify:
 ## Next Hour
 
 In the next hour, we'll dive into CSS fundamentals and explore how the styling is applied to our portfolio website.
+
