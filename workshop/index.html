@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative Coding Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.min.js"></script>
+</head>
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <h1 class="header__title">Creative Coding Portfolio</h1>
+            <p class="header__description">
+                Welcome to my collection of interactive p5.js sketches. Each piece explores different aspects of 
+                creative coding, from generative art to interactive visualizations. Click on any card to experience 
+                the sketch in full detail.
+            </p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <div class="container">
+            <!-- Portfolio Grid -->
+            <section class="portfolio">
+                
+                <h2 class="portfolio__title">My Sketches</h2>
+                <div class="portfolio__grid">
+                    
+                    <!-- Sketch Card 1 -->
+                    <article class="card">
+                        <div class="card__preview">
+                            <img src="/img/sketch-01.png" 
+                                 alt="Particle System Animation" 
+                                 class="card__image">
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Particle System</h3>
+                            <p class="card__description">Interactive particle system with physics simulation</p>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn--primary" data-sketch="particle-system">
+                                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Sketch Card 2 -->
+                    <article class="card">
+                        <div class="card__preview">
+                            <img src="/img/sketch-02.png"
+                                 alt="Fractal Tree Animation" 
+                                 class="card__image">
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Fractal Tree</h3>
+                            <p class="card__description">Recursive tree generation with dynamic growth</p>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn--primary" data-sketch="fractal-tree">
+                                
+                                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Sketch Card 3 -->
+                    <article class="card">
+                        <div class="card__preview">
+                            <img src="/img/sketch-03.png"
+                                 alt="Sound Visualization" 
+                                 class="card__image">
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Sound Waves</h3>
+                            <p class="card__description">Audio-reactive visualization with frequency analysis</p>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn--primary" data-sketch="sound-waves">
+                                
+                                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Sketch Card 4 -->
+                    <article class="card">
+                        <div class="card__preview">
+                            <img src="/img/sketch-04.png"
+                                 alt="Flow Field Animation" 
+                                 class="card__image">
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Flow Field</h3>
+                            <p class="card__description">Organic movement patterns using Perlin noise</p>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn--primary" data-sketch="flow-field">
+                                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>  
+
+                    <!-- Sketch Card 5 -->
+                    <article class="card">
+                        <div class="card__preview">
+                            <img src="/img/sketch-05.png"
+                                 alt="Cellular Automata" 
+                                 class="card__image">
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">Game of Life</h3>
+                            <p class="card__description">Conway's cellular automata simulation</p>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn--primary" data-sketch="game-of-life">
+                                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- Sketch Card 6 -->
+                    <article class="card">
+                        <div class="card__preview">
+                            <img src="/img/sketch-06.png"
+                                 alt="3D Geometry" 
+                                 class="card__image">
+                        </div>
+                        <div class="card__content">
+                            <h3 class="card__title">3D Geometry</h3>
+                            <p class="card__description">Three-dimensional shapes with rotation and lighting</p>
+                        </div>
+                        <div class="card__footer">
+                            <button class="btn btn--primary" data-sketch="3d-geometry">
+                                <svg class="btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                    <path d="M7 17L17 7M17 7H7M17 7V17"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer Section --> 
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__info">
+                <p class="footer__text">© 2025 Creative Coding Portfolio. All rights reserved.</p>
+                <ul class="footer__socials">
+                    <li><a href="#" class="footer__link">GitHub</a></li>
+                    <li><a href="#" class="footer__link">Twitter</a></li>
+                    <li><a href="#" class="footer__link">LinkedIn</a></li>  
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Dialog -->
+    <dialog class="modal" id="sketch-modal">
+        <div class="modal__content">
+            <header class="modal__header">
+                <h2 class="modal__title" id="modal-title">Sketch Title</h2>
+                <button class="modal__close" id="close-modal" aria-label="Close modal">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </header>
+            <div class="modal__body">
+                <div class="modal__sketch-container" id="sketch-container">
+                    <!-- p5.js sketch will be inserted here -->
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
