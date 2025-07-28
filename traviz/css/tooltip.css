@@ -1,0 +1,291 @@
+/* TRAViz Tooltip Improvements - Adapted for qtip structure */
+
+/* Base tooltip container - targets the qtip wrapper */
+.qtip-contentWrapper {
+  background: #ffffff !important;
+  border: none !important;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  overflow: hidden !important;
+  max-width: 400px !important;
+  backdrop-filter: blur(10px);
+  position: relative !important;
+}
+
+/* Tooltip header - targets the qtip-title */
+.qtip-title {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%) !important;
+  padding: 16px 50px 16px 20px !important; /* Extra right padding for X button */
+  border-bottom: 1px solid #e2e8f0 !important;
+  font-weight: 600 !important;
+  color: #1e293b !important;
+  margin: 0 !important;
+  font-size: 16px !important;
+  position: relative !important;
+}
+
+/* Close button - positioned in top right corner */
+.qtip-button {
+  background: none !important;
+  border: none !important;
+  padding: 8px !important;
+  border-radius: 8px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: #64748b !important;
+  position: absolute !important;
+  top: 0 !important;
+  right: 0 !important;
+  font-size: 18px !important;
+  font-weight: 400 !important;
+  line-height: 1 !important;
+  width: 32px !important;
+  height: 32px !important;
+  z-index: 10 !important;
+}
+
+.qtip-button:hover {
+  background: #e2e8f0 !important;
+  color: #374151 !important;
+}
+
+/* Tooltip content - targets the qtip-content */
+.qtip-content {
+  background: white !important;
+  color: #1e293b !important;
+  padding: 20px !important;
+  text-align: left !important;
+}
+
+/* Remove all inline styles and apply proper styling */
+.qtip-content td[style] {
+  padding: 12px 0 !important;
+  text-align: left !important;
+  color: inherit !important;
+}
+
+/* Table styling */
+.qtip-content table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  border: none !important;
+}
+
+/* Table headers */
+.qtip-content table th {
+  text-align: left !important;
+  padding: 0 0 12px 0 !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  color: #64748b !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+  border: none !important;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+/* Table cells */
+.qtip-content table td {
+  padding: 12px 0 !important;
+  border: none !important;
+  vertical-align: top !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+  text-align: left !important;
+}
+
+.qtip-content table tr:last-child td {
+  border-bottom: none !important;
+}
+
+/* Edition column styling - first column */
+.qtip-content table td:first-child {
+  font-size: 14px !important;
+  color: #3b82f6 !important; /* Blue color for edition names */
+  line-height: 1.5 !important;
+  padding-right: 16px !important;
+  max-width: 200px !important;
+  text-align: left !important;
+  font-weight: 500 !important;
+}
+
+/* Token column styling - second column with badge design */
+.qtip-content table td:last-child {
+  font-family: "SF Mono", Monaco, "Cascadia Code", "Roboto Mono", Consolas, "Courier New", monospace !important;
+  font-size: 13px !important;
+  color: #1e293b !important;
+  text-align: left !important;
+  position: relative !important;
+}
+
+/* Word and badge container */
+.qtip-content table td:last-child {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* Style for the word part (before the colon) */
+.qtip-content table td:last-child::before {
+  content: attr(data-word) !important;
+  background: #f1f5f9 !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+}
+
+/* Badge styling for occurrence count */
+.occurrence-badge {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%) !important;
+  color: white !important;
+  padding: 2px 8px !important;
+  border-radius: 12px !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+  min-width: 20px !important;
+  text-align: center !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 1px 3px rgba(59, 130, 246, 0.3) !important;
+}
+
+/* Alternative approach for occurrence text styling */
+.qtip-content table td:last-child {
+  position: relative !important;
+}
+
+/* Parse and style occurrence text like "ante": 1 occurrences */
+.qtip-content table td:last-child:has-text {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+/* Style the word part */
+.word-token {
+  background: #f1f5f9 !important;
+  padding: 4px 8px !important;
+  border-radius: 6px !important;
+  font-weight: 500 !important;
+  color: #1e293b !important;
+}
+
+/* Row hover effect */
+.qtip-content table tr:hover {
+  background: #f8fafc !important;
+}
+
+
+/* Animation for tooltip appearance */
+.qtip-contentWrapper {
+  animation: tooltipFadeIn 0.2s ease-out;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Focus styles for accessibility */
+.qtip-button:focus {
+  outline: 2px solid #3b82f6 !important;
+  outline-offset: 2px !important;
+}
+
+/* Override any right-aligned text */
+.qtip-content * {
+  text-align: left !important;
+}
+
+/* Specific override for any inline text-align styles */
+.qtip-content [style*="text-align: right"],
+.qtip-content [style*="text-align:right"] {
+  text-align: left !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .qtip-contentWrapper {
+    max-width: 90vw !important;
+    margin: 0 5vw !important;
+  }
+
+  .qtip-title {
+    padding: 12px 40px 12px 16px !important;
+    font-size: 14px !important;
+  }
+
+  .qtip-content {
+    padding: 16px !important;
+  }
+
+  .qtip-button {
+    top: 8px !important;
+    right: 8px !important;
+    width: 28px !important;
+    height: 28px !important;
+  }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .qtip-contentWrapper {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+  }
+
+  .qtip-title {
+    background: linear-gradient(135deg, #334155 0%, #475569 100%) !important;
+    border-bottom-color: #475569 !important;
+    color: #f1f5f9 !important;
+  }
+
+  .qtip-button {
+    color: #94a3b8 !important;
+  }
+
+  .qtip-button:hover {
+    background: #475569 !important;
+    color: #f1f5f9 !important;
+  }
+
+  .qtip-content {
+    background: #1e293b !important;
+    color: #f1f5f9 !important;
+  }
+
+  .qtip-content table th {
+    color: #94a3b8 !important;
+    border-bottom-color: #475569 !important;
+  }
+
+  .qtip-content table td {
+    border-bottom-color: #334155 !important;
+  }
+
+  .qtip-content table td:first-child {
+    color: #60a5fa !important; /* Lighter blue for dark mode */
+  }
+
+  .word-token {
+    background: #334155 !important;
+    color: #f1f5f9 !important;
+  }
+
+  .occurrence-badge {
+    background: linear-gradient(135deg, #60a5fa 0%, #3b82f6 100%) !important;
+  }
+
+  .qtip-content table tr:hover {
+    background: #334155 !important;
+  }
+}

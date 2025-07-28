@@ -1,0 +1,26 @@
+[
+    {
+        "edition": "Vulgate",
+        "text": "In principio creavit Deus caelum et terram"
+    },
+    {
+        "edition": "Nova Vulgata",
+        "text": "In principio creavit Deus caelum et terram"
+    },
+    {
+        "edition": "Vetus Latina (Codex Lugdunensis)",
+        "text": "In principio fecit Deus caelum et terram"
+    },
+    {
+        "edition": "Vetus Latina (African Text)",
+        "text": "In initio fecit Deus caelum et terram"
+    },
+    {
+        "edition": "Medieval Manuscript Variant",
+        "text": "In principio creavit Dominus Deus caelum et terram"
+    },
+    {
+        "edition": "Clementine Vulgate",
+        "text": "In principio creavit Deus cælum et terram"
+    }
+]
