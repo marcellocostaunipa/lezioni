@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Variant Graph - TRAViz Style (Word Level Fixed)</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+        }
+        h1 {
+            color: #4a5568;
+            margin-bottom: 2rem;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+         h3 {
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            font-weight: bold;
+        }
+        .subtitle {
+            text-align: center;
+            color: #718096;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+
+        .small {
+            font-size: 0.85em;
+            color: #718096;
+        }
+        /* New style for the scrolling container */
+        .graph-scroll-container {
+            overflow-x: auto; /* Enable horizontal scrolling */
+            border: 2px solid #e2e8f0;
+            background: #fafafa;
+            margin: 20px 0;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        /* Remove border/background from #graph as it's now on the container */
+        #graph {
+            /* width will be set by JS */
+            height: 600px; /* Fixed height for the SVG */
+        }
+        /* Removed .controls and button styles */
+
+        .legend-wrapper {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            margin: 0;
+        }
+
+        .legend {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .legend-label {
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #4a5568;
+            margin: 0;
+            margin-bottom: 1rem;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            cursor: pointer; /* Indicate clickable */
+            transition: all 0.3s ease;
+        }
+        .legend-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); /* Similar to button hover */
+        }
+        .legend-item.active {
+            box-shadow: 0 6px 20px rgba(56, 161, 105, 0.4);
+            transform: translateY(-2px);
+            outline: 3px solid #000000; /* Active outline color */
+        }
+        .legend-item.active .legend-color {
+            border: 2px solid white; /* Add a border to the color circle when active */
+        }
+        /* Style for non-clickable shared legend item */
+        .legend-item.non-clickable {
+            cursor: default;
+            opacity: 0.8;
+        }
+        .legend-item.non-clickable:hover {
+            transform: none;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Reset hover effect */
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+        }
+
+        .legend-string {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: underline;
+        }
+
+        .node {
+            cursor: pointer;
+        }
+        .node rect {
+            transition: transform 0.2s ease;
+        }
+        .node:hover rect {
+            transform: scale(1.05);
+        }
+        .node text {
+            pointer-events: none;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            fill: white; /* Changed to white for better contrast on dark rects */
+            font-weight: normal; /* Removed bold */
+        }
+        .link {
+            fill: none;
+            transition: all 0.3s ease;
+        }
+        .link:hover {
+            stroke-width: 3;
+        }
+        .variant-path {
+            cursor: pointer;
+        }
+        .highlighted {
+            stroke-width: 4 !important;
+            opacity: 1 !important;
+        }
+        .dimmed {
+            opacity: 0.2 !important;
+        }
+        .tooltip {
+            position: absolute;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 1000;
+        }
+        .witness-info { /* Changed from edition-info */
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .witness-card { /* Changed from edition-card */
+            background: white;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-left: 4px solid;
+        }
+        /* Updated classes for witness-specific colors */
+        .witness-A { border-left-color: #e53e3e; }
+        .witness-B { border-left-color: #3182ce; }
+        .witness-C { border-left-color: #38a169; }
+        .witness-D { border-left-color: #ff8c00; } /* Orange */
+        .witness-E { border-left-color: #4169e1; } /* Royal Blue */
+        .witness-F { border-left-color: #00ced1; } /* Dark Cyan */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Variant Graph</h1>
+        <div class="legend-wrapper">
+            <p class="legend-label">Witnesses</p>
+            <div class="legend">
+                
+            <!-- Dynamic legend items will be inserted here by JavaScript -->
+            </div>
+        </div>
+        <div class="graph-scroll-container"> <!-- New wrapper for scrolling -->
+            <div id="graph"></div>
+        </div>
+        <div class="witness-info" id="witness-info-container">
+            <!-- Witness cards will be dynamically loaded here by JavaScript -->
+        </div>
+    </div>
+    <div class="tooltip" id="tooltip"></div>
+    <script>
+        // Color schemes for different witnesses
+        const witnessColors = {
+            'A': '#e53e3e',
+            'B': '#3182ce',
+            'C': '#38a169',
+            'D': '#ff8c00', // Orange
+            'E': '#4169e1', // Royal Blue
+            'F': '#00ced1', // Dark Cyan
+            'shared': '#000000' // Changed to black
+        };
+
+        // Set up SVG
+        const graphDiv = d3.select('#graph');
+        const height = 600; // Fixed height for the SVG
+        const textPadding = 10; // Padding inside the rect for text
+        const minRectWidth = 40; // Minimum width for very short words
+
+        // Create tooltip
+        const tooltip = d3.select('#tooltip');
+
+        let allReferencesData = []; // To store the raw references data for dynamic cards
+        let allGraphData = null; // Global variable to store graph data
+
+        // Function to render the graph
+        function renderGraph(data) {
+            // Set SVG width dynamically based on calculated totalGraphWidth
+            const svgWidth = data.totalGraphWidth || 1140; // Fallback if not provided
+            let svg = graphDiv.select('svg');
+            if (svg.empty()) {
+                svg = graphDiv.append('svg');
+            }
+            svg.attr('width', svgWidth)
+               .attr('height', height);
+
+            // Clear existing graph elements
+            svg.selectAll('.link-group, .node').remove(); // Clear link-groups and nodes
+
+            // Create link groups, each representing a logical connection between two nodes
+            const linksGroup = svg.selectAll('.link-group')
+                .data(data.links)
+                .enter().append('g')
+                .attr('class', 'link-group');
+
+            // For each logical link, draw individual paths for each witness it belongs to
+            linksGroup.each(function(d) {
+                const source = data.nodes.find(n => n.id === d.source);
+                const target = data.nodes.find(n => n.id === d.target);
+                if (!source || !target) return;
+
+                const witnessesToDraw = d.witnesses;
+                const numWitnesses = witnessesToDraw.length;
+                const offsetStep = 5; // Small offset for parallel lines
+
+                witnessesToDraw.forEach((witness, i) => {
+                    const offset = (i - (numWitnesses - 1) / 2) * offsetStep;
+
+                    let pathD;
+                    // Adjust source and target Y for offset
+                    const currentSourceY = source.y + offset;
+                    const currentTargetY = target.y + offset;
+
+                    // If nodes are on the same horizontal or vertical line, draw a straight line
+                    if (source.y === target.y) { // Horizontal line
+                        pathD = `M${source.x},${currentSourceY}L${target.x},${currentTargetY}`;
+                    } else if (source.x === target.x) { // Vertical line (less common in this layout)
+                        pathD = `M${source.x + offset},${source.y}L${target.x + offset},${target.y}`;
+                    } else {
+                        // For diagonal connections, use a cubic bezier for a smooth S-curve
+                        const midX = (source.x + target.x) / 2;
+                        pathD = `M${source.x},${currentSourceY} C${midX},${currentSourceY} ${midX},${currentTargetY} ${target.x},${currentTargetY}`;
+                    }
+
+                    d3.select(this).append('path')
+                        .attr('class', 'link variant-path')
+                        .attr('data-witness', witness)
+                        .attr('d', pathD)
+                        .attr('stroke', witnessColors[witness])
+                        .attr('stroke-width', 2)
+                        .attr('opacity', 0.7)
+                        .on('mouseover', function(event) {
+                            tooltip.style('opacity', 1)
+                                .html(`Witnesses: ${d.witnesses.join(', ')}<br>Connection in variant graph`)
+                                .style('left', (event.pageX + 10) + 'px')
+                                .style('top', (event.pageY - 10) + 'px');
+                        })
+                        .on('mouseout', function() {
+                            tooltip.style('opacity', 0);
+                        });
+                });
+            });
+
+            // Create nodes
+            const nodes = svg.selectAll('.node')
+                .data(data.nodes)
+                .enter().append('g')
+                .attr('class', 'node')
+                .attr('transform', d => `translate(${d.x},${d.y})`)
+                .on('click', function(event, d) {
+                    highlightNode(d.id);
+                });
+
+            // Add background rectangles for text
+            nodes.append('rect')
+                .attr('width', d => {
+                    // Estimate character width based on font size
+                    let charWidth;
+                    if (d.type === 'shared') charWidth = 9; // Adjusted for 16px font
+                    else if (d.type === 'start' || d.type === 'end') charWidth = 7; // Adjusted for 12px font
+                    else charWidth = 8; // Adjusted for 14px font
+                    return Math.max(minRectWidth, d.text.length * charWidth + (2 * textPadding));
+                })
+                .attr('height', d => d.type === 'start' || d.type === 'end' ? 24 : 30)
+                .attr('x', function(d) {
+                    // Center the rect based on its calculated width
+                    const rectWidth = d3.select(this).attr('width');
+                    return -rectWidth / 2;
+                })
+                .attr('y', d => d.type === 'start' || d.type === 'end' ? -12 : -15)
+                .attr('rx', 10)
+                .attr('ry', 10)
+                .attr('fill', d => {
+                    if (d.type === 'start' || d.type === 'end') return '#4a5568';
+                    if (d.type === 'shared') return witnessColors.shared;
+                    // If a node is a variant, use the color of its first (and usually only) witness
+                    if (d.type === 'variant' && d.witnesses && d.witnesses.length > 0) {
+                        return witnessColors[d.witnesses[0]];
+                    }
+                    return witnessColors.shared; // Fallback
+                })
+                .attr('stroke', '#fff')
+                .attr('stroke-width', 1.5)
+                .style('opacity', 0.9);
+
+            // Add text to nodes
+            nodes.append('text')
+                .text(d => d.text)
+                .attr('dy', '2px') // Changed from '3px' to '2px' for fine-tuning vertical centering
+                .style('font-size', d => {
+                    if (d.type === 'shared') return '20px'; // Changed from 24px to 20px
+                    if (d.type === 'start' || d.type === 'end') return '12px';
+                    return '14px';
+                })
+                .style('fill', 'white')
+                .style('pointer-events', 'none');
+
+            // Add mouseover effects for nodes
+            nodes.on('mouseover', function(event, d) {
+                    tooltip.style('opacity', 1)
+                        .html(`Text: "${d.text}"<br>Type: ${d.type}<br>Witnesses: ${d.witnesses ? d.witnesses.join(', ') : 'N/A'}`)
+                        .style('left', (event.pageX + 10) + 'px')
+                        .style('top', (event.pageY - 10) + 'px');
+                })
+                .on('mouseout', function() {
+                    tooltip.style('opacity', 0);
+                });
+        }
+
+        // Interactive functions (globalized for onclick)
+        window.toggleWitness = function(witness, clickedElement) {
+            // Clear any active node highlights
+            d3.select('#graph').selectAll('.link').classed('highlighted', false).classed('dimmed', false);
+            d3.select('#graph').selectAll('.node rect').style('opacity', 0.9);
+
+            // Remove 'active' class from all legend items
+            document.querySelectorAll('.legend-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            // Add 'active' class to the clicked legend item
+            if (clickedElement) {
+                clickedElement.classList.add('active');
+            }
+
+            highlightWitness(witness);
+        }
+
+        function highlightWitness(witness) {
+            d3.select('#graph').selectAll('.link') // Select all individual link paths
+                .classed('highlighted', function() {
+                    return d3.select(this).attr('data-witness') === witness;
+                })
+                .classed('dimmed', function() {
+                    return d3.select(this).attr('data-witness') !== witness;
+                });
+
+            d3.select('#graph').selectAll('.node rect')
+                .style('opacity', d => {
+                    if (d.type === 'start' || d.type === 'end') return 0.9;
+                    return d.witnesses && d.witnesses.includes(witness) ? 0.9 : 0.3;
+                });
+        }
+
+        window.highlightNode = function(nodeId) {
+            // Clear any active legend highlights
+            document.querySelectorAll('.legend-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            const clickedNode = allGraphData.nodes.find(n => n.id === nodeId); // Use allGraphData
+            if (!clickedNode) return;
+
+            const witnessesOfClickedNode = new Set(clickedNode.witnesses);
+
+            // Highlight links: a link is highlighted if any of its witnesses are in witnessesOfClickedNode
+            d3.select('#graph').selectAll('.link')
+                .classed('highlighted', function(d_link) {
+                    return d_link.witnesses.some(witness => witnessesOfClickedNode.has(witness));
+                })
+                .classed('dimmed', function(d_link) {
+                    return !d_link.witnesses.some(witness => witnessesOfClickedNode.has(witness));
+                });
+
+            // Highlight nodes: a node is highlighted if it's the clicked node, or if it's part of any highlighted link
+            d3.select('#graph').selectAll('.node rect')
+                .style('opacity', d_node => {
+                    if (d_node.id === nodeId) return 0.9; // Always highlight the clicked node
+
+                    // Check if this node is a source or target of any currently highlighted link
+                    const isConnectedToHighlightedPath = d3.select('#graph').selectAll('.link.highlighted').data().some(link => {
+                        return link.source === d_node.id || link.target === d_node.id;
+                    });
+
+                    return isConnectedToHighlightedPath ? 0.9 : 0.3;
+                });
+        };
+
+        window.resetHighlight = function(clickedElement) {
+            // Remove 'active' class from all legend items
+            document.querySelectorAll('.legend-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            // No need to add 'active' to reset button itself, as it's a reset.
+
+            d3.select('#graph').selectAll('.link').classed('dimmed', false).classed('highlighted', false);
+            d3.select('#graph').selectAll('.node rect').style('opacity', 0.9);
+        }
+
+        // Function to render witness info cards and legend dynamically
+        function renderWitnessInfoAndLegend(references) {
+            const infoContainer = d3.select('#witness-info-container');
+            infoContainer.selectAll('.witness-card').remove(); // Clear existing cards
+
+            const cards = infoContainer.selectAll('.witness-card')
+                .data(references)
+                .enter().append('div')
+                .attr('class', d => `witness-card witness-${d.witness}`); // Dynamic class for border color
+
+            cards.append('h3')
+                .text(d => `Witness ${d.witness} (${d.year})`); // Changed to Witness X (Year)
+
+            cards.append('p')
+                .html(d => `"${d.text}"`);
+
+            cards.append('p')
+                .html(d => `<span class="small">${d.characteristics}</span>`);
+
+            // --- Dynamic Legend Generation ---
+            const legendContainer = d3.select('.legend');
+            legendContainer.selectAll('.legend-item').remove(); // Clear existing legend items
+
+            // Add witness-specific legend items
+            references.forEach(ref => {
+                legendContainer.append('div')
+                    .attr('class', 'legend-item')
+                    .attr('data-witness', ref.witness)
+                    .attr('onclick', `toggleWitness('${ref.witness}', this)`)
+                    .html(`
+                        <div class="legend-color" style="background: ${witnessColors[ref.witness]};"></div>
+                        <span>${ref.witness}</span>
+                    `);
+            });
+
+            // Add Reset View button
+            legendContainer.append('div')
+                .attr('class', 'legend-string')
+                .attr('onclick', 'resetHighlight(this)')
+                .html(`
+                    <span>Reset View</span>
+                `);
+
+            
+        }
+
+        // Fetch all data and render the graph
+        Promise.all([
+            d3.json('graph-data.json'),
+            d3.json('references.json')
+        ]).then(([graphData, referencesData]) => {
+            if (graphData && referencesData) {
+                allGraphData = graphData; // Store graph data globally for highlightNode
+                allReferencesData = referencesData; // Store references data globally
+                renderGraph(graphData);
+                renderWitnessInfoAndLegend(referencesData); // Call the updated function
+            } else {
+                console.error('Failed to load one or more data files.');
+            }
+        }).catch(error => {
+            console.error('Error fetching data:', error);
+        });
+    </script>
+</body>
+</html>

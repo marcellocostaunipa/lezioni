@@ -1,0 +1,44 @@
+[
+  {
+    "witness": "A",
+    "title": "Vulgate - Genesis 1:1",
+    "year": 1850,
+    "text": "in principio creavit deus caelum et terram et aquas dei",
+    "characteristics": "Original manuscript, archaic language with divine terminology"
+  },
+  {
+    "witness": "B",
+    "title": "Nova Vulgata - Genesis 1:1",
+    "year": 1920,
+    "text": "in principio creavit deus caelum et terram",
+    "characteristics": "Modern translation, follows shared/central text path"
+  },
+  {
+    "witness": "C",
+    "title": "Vetus Latina - Genesis 1:1",
+    "year": 1995,
+    "text": "initio fecit pater nostrum deus caelum et aquas dei",
+    "characteristics": "Contemporary language with modern verb choices"
+  },
+  {
+    "witness": "D",
+    "title": "Vetus Latina (African Text) - Genesis 1:1",
+    "year": 1995,
+    "text": "in principio creavit dominus deus caelum et terram",
+    "characteristics": "Contemporary language with modern verb choices"
+  },
+  {
+    "witness": "E",
+    "title": "Medieval Manuscript Variant - Genesis 1:1",
+    "year": 1995,
+    "text": "initio Deus fecit terram spiritus dominus caelum",
+    "characteristics": "Contemporary language with modern verb choices"
+  },
+  {
+    "witness": "F",
+    "title": "Clementine Vulgate - Genesis 1:1",
+    "year": 1592,
+    "text": "in principio creavit Deus caelum et terram et erat terra inanis et vacua",
+    "characteristics": "Classical Latin with traditional orthography"
+  }
+]
