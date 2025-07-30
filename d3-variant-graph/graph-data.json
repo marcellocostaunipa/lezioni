@@ -1,0 +1,428 @@
+{
+  "nodes": [
+    {
+      "id": "start",
+      "text": "START",
+      "type": "start",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "x": 350,
+      "y": 300
+    },
+    {
+      "id": "end",
+      "text": "END",
+      "type": "end",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "x": 1550,
+      "y": 300
+    },
+    {
+      "id": "in_pos0",
+      "text": "in",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ],
+      "x": 450,
+      "y": 300
+    },
+    {
+      "id": "principio_pos1",
+      "text": "principio",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ],
+      "x": 550,
+      "y": 300
+    },
+    {
+      "id": "initio_pos1",
+      "text": "initio",
+      "type": "variant",
+      "witnesses": [
+        "C"
+      ],
+      "x": 550,
+      "y": 220
+    },
+    {
+      "id": "creavit_pos2",
+      "text": "creavit",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "E",
+        "F"
+      ],
+      "x": 650,
+      "y": 300
+    },
+    {
+      "id": "deus_pos2",
+      "text": "deus",
+      "type": "variant",
+      "witnesses": [
+        "D"
+      ],
+      "x": 650,
+      "y": 220
+    },
+    {
+      "id": "deus_pos3",
+      "text": "deus",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "B",
+        "E"
+      ],
+      "x": 750,
+      "y": 300
+    },
+    {
+      "id": "dominus_pos3",
+      "text": "dominus",
+      "type": "shared",
+      "witnesses": [
+        "C",
+        "F"
+      ],
+      "x": 750,
+      "y": 220
+    },
+    {
+      "id": "creavit_pos3",
+      "text": "creavit",
+      "type": "variant",
+      "witnesses": [
+        "D"
+      ],
+      "x": 750,
+      "y": 380
+    },
+    {
+      "id": "caelum_pos4",
+      "text": "caelum",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ],
+      "x": 850,
+      "y": 300
+    },
+    {
+      "id": "mundum_pos4",
+      "text": "mundum",
+      "type": "variant",
+      "witnesses": [
+        "D"
+      ],
+      "x": 850,
+      "y": 220
+    },
+    {
+      "id": "universum_pos4",
+      "text": "universum",
+      "type": "variant",
+      "witnesses": [
+        "F"
+      ],
+      "x": 850,
+      "y": 380
+    },
+    {
+      "id": "et_pos5",
+      "text": "et",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ],
+      "x": 950,
+      "y": 300
+    },
+    {
+      "id": "terram_pos6",
+      "text": "terram",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ],
+      "x": 1050,
+      "y": 300
+    },
+    {
+      "id": "et_pos7",
+      "text": "et",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "E"
+      ],
+      "x": 1150,
+      "y": 300
+    },
+    {
+      "id": "aquas_pos8",
+      "text": "aquas",
+      "type": "variant",
+      "witnesses": [
+        "A"
+      ],
+      "x": 1250,
+      "y": 300
+    },
+    {
+      "id": "spiritus_pos8",
+      "text": "spiritus",
+      "type": "variant",
+      "witnesses": [
+        "E"
+      ],
+      "x": 1250,
+      "y": 220
+    },
+    {
+      "id": "dei_pos9",
+      "text": "dei",
+      "type": "shared",
+      "witnesses": [
+        "A",
+        "E"
+      ],
+      "x": 1350,
+      "y": 300
+    }
+  ],
+  "links": [
+    {
+      "source": "start",
+      "target": "in_pos0",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "source": "in_pos0",
+      "target": "principio_pos1",
+      "witnesses": [
+        "A",
+        "B",
+        "D",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "source": "principio_pos1",
+      "target": "creavit_pos2",
+      "witnesses": [
+        "A",
+        "B",
+        "E",
+        "F"
+      ]
+    },
+    {
+      "source": "creavit_pos2",
+      "target": "deus_pos3",
+      "witnesses": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "source": "deus_pos3",
+      "target": "caelum_pos4",
+      "witnesses": [
+        "A",
+        "B",
+        "E"
+      ]
+    },
+    {
+      "source": "caelum_pos4",
+      "target": "et_pos5",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "source": "et_pos5",
+      "target": "terram_pos6",
+      "witnesses": [
+        "A",
+        "B",
+        "C",
+        "E"
+      ]
+    },
+    {
+      "source": "terram_pos6",
+      "target": "et_pos7",
+      "witnesses": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "source": "et_pos7",
+      "target": "aquas_pos8",
+      "witnesses": [
+        "A"
+      ]
+    },
+    {
+      "source": "aquas_pos8",
+      "target": "dei_pos9",
+      "witnesses": [
+        "A"
+      ]
+    },
+    {
+      "source": "dei_pos9",
+      "target": "end",
+      "witnesses": [
+        "A",
+        "E"
+      ]
+    },
+    {
+      "source": "terram_pos6",
+      "target": "end",
+      "witnesses": [
+        "B",
+        "C"
+      ]
+    },
+    {
+      "source": "in_pos0",
+      "target": "initio_pos1",
+      "witnesses": [
+        "C"
+      ]
+    },
+    {
+      "source": "initio_pos1",
+      "target": "creavit_pos2",
+      "witnesses": [
+        "C"
+      ]
+    },
+    {
+      "source": "creavit_pos2",
+      "target": "dominus_pos3",
+      "witnesses": [
+        "C",
+        "F"
+      ]
+    },
+    {
+      "source": "dominus_pos3",
+      "target": "caelum_pos4",
+      "witnesses": [
+        "C"
+      ]
+    },
+    {
+      "source": "principio_pos1",
+      "target": "deus_pos2",
+      "witnesses": [
+        "D"
+      ]
+    },
+    {
+      "source": "deus_pos2",
+      "target": "creavit_pos3",
+      "witnesses": [
+        "D"
+      ]
+    },
+    {
+      "source": "creavit_pos3",
+      "target": "mundum_pos4",
+      "witnesses": [
+        "D"
+      ]
+    },
+    {
+      "source": "mundum_pos4",
+      "target": "end",
+      "witnesses": [
+        "D"
+      ]
+    },
+    {
+      "source": "et_pos7",
+      "target": "spiritus_pos8",
+      "witnesses": [
+        "E"
+      ]
+    },
+    {
+      "source": "spiritus_pos8",
+      "target": "dei_pos9",
+      "witnesses": [
+        "E"
+      ]
+    },
+    {
+      "source": "dominus_pos3",
+      "target": "universum_pos4",
+      "witnesses": [
+        "F"
+      ]
+    },
+    {
+      "source": "universum_pos4",
+      "target": "end",
+      "witnesses": [
+        "F"
+      ]
+    }
+  ],
+  "totalGraphWidth": 1900
+}

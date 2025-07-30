@@ -1,0 +1,44 @@
+[
+  {
+    "witness": "A",
+    "year": 1850,
+    "text": "in principio creavit deus caelum et terram et aquas dei",
+    "characteristics": "Original manuscript, archaic language with divine terminology",
+    "title": "Witness A"
+  },
+  {
+    "witness": "B",
+    "year": 1920,
+    "text": "in principio creavit deus caelum et terram",
+    "characteristics": "Modern translation, follows shared/central text path",
+    "title": "Witness B"
+  },
+  {
+    "witness": "C",
+    "year": 1950,
+    "text": "in initio creavit dominus caelum et terram",
+    "characteristics": "Revised translation, introduces new vocabulary",
+    "title": "Witness C"
+  },
+  {
+    "witness": "D",
+    "year": 1980,
+    "text": "in principio deus creavit mundum",
+    "characteristics": "Simplified version, focuses on core message",
+    "title": "Witness D"
+  },
+  {
+    "witness": "E",
+    "year": 2000,
+    "text": "in principio creavit deus caelum et terram et spiritus dei",
+    "characteristics": "Contemporary interpretation, emphasizes spiritual aspect",
+    "title": "Witness E"
+  },
+  {
+    "witness": "F",
+    "year": 2010,
+    "text": "in principio creavit dominus universum",
+    "characteristics": "Modern academic translation, uses broader terms",
+    "title": "Witness F"
+  }
+]

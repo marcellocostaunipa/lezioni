@@ -455,7 +455,7 @@
                 .attr('class', d => `witness-card witness-${d.witness}`); // Dynamic class for border color
 
             cards.append('h3')
-                .text(d => `Witness ${d.witness} (${d.year})`); // Changed to Witness X (Year)
+                .text(d => `${d.title} (${d.year})`); // Changed to Witness X (Year)
 
             cards.append('p')
                 .html(d => `"${d.text}"`);
