@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Walkscapes</title>
+
+		<link rel="stylesheet" href="dist/reset.css">
+		<link rel="stylesheet" href="dist/reveal.css">
+		<link rel="stylesheet" href="dist/theme/black.css">
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+		<style type="text/css">
+
+			@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300..900&display=swap');
+
+			@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+			:root {
+				--r-main-font: 'Merriweather Sans', sans-serif;
+				--r-heading-font: 'Merriweather', serif;
+  				--reveal-accent: #ffcc00; /* colore giallo principale */
+  				--r-link-color: #ffcc00;
+			}
+
+			* {
+				text-align: left;
+			}
+
+			mark {
+ 			 	background-color: var(--reveal-accent);
+			}
+
+			section .image {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				max-width: 100%;
+				max-height: 100%;
+			}
+
+			section .content {
+				font-size: 2.5rem;
+				line-height: 1.5;
+				max-width: 90%;
+				text-wrap: balance;	
+			}
+
+			section .content.small {
+				font-size: 1.75rem;
+			}
+
+			section .title {
+				text-wrap: balance;
+				font-size: 15rem;
+				line-height: 1;
+				text-transform: none;
+			}
+
+			section .content.text-big {
+				text-wrap: balance;
+				font-size: 7rem;
+				line-height: 1.1;
+			}
+
+			section .label {
+				text-align: left; 
+				font-size: 1.75rem;
+				border-bottom: 4px solid white;
+				width: auto;
+				display: inline-block;
+			}
+
+			section .footer {
+				border-top: 2px dotted white;
+				margin-top: 2rem;
+				padding-top: 2rem;
+				font-size: 1.5rem;
+			}
+
+			.reveal .code-wrapper {
+  				width: 100%;
+  				height: 90vh;
+  				font-size: 2.5rem;
+			}
+
+			.reveal .controls .navigate-left,
+			.reveal .controls .navigate-right {
+			  color: var(--reveal-accent);
+			}
+
+			.reveal .controls .navigate-left:hover svg path,
+			.reveal .controls .navigate-right:hover svg path,
+			.reveal .controls .navigate-up:hover svg path,
+			.reveal .controls .navigate-down:hover svg path {
+			  stroke: color-mix(in srgb, var(--reveal-accent) 80%, white);
+			  fill: color-mix(in srgb, var(--reveal-accent) 80%, white);
+			}
+
+			.reveal .progress {
+			  background: rgba(255, 255, 255, 0.15);
+			  height: 6px;
+			  border-radius: 3px;
+			}
+
+			.reveal .progress > span {
+			  background: linear-gradient(
+			    90deg,
+			    color-mix(in srgb, var(--reveal-accent) 20%, black),
+			    var(--reveal-accent),
+			    color-mix(in srgb, var(--reveal-accent) 90%, white)
+			  ) !important;
+			  height: 6px;
+			  border-radius: 3px;
+			  transition: width 300ms ease;
+			}
+
+		</style>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section>
+					<h1 class="title">Walkscapes</h1>
+					<p class="content small">Marcello Costa, Elia Maniscalco - Novembre 2025</p>
+				</section>
+				
+				<section>
+					<img class="stretch" src="img/walkspaces-cover.jpg" data-preview-image/>
+					<p class="footer">Careri, F. (2017). Walkscapes: Walking as an aesthetic practice. Culicidae Architectural Press.</p>
+				</section>	
+
+				<section>
+					<img class="stretch" src="img/walkspaces-01.jpeg" data-preview-image/>
+					<p class="footer">Careri, F. (2017). Walkscapes: Walking as an aesthetic practice. Culicidae Architectural Press.</p>
+				</section>
+
+				<section>
+					<p class="content text-big">
+						[...] <mark>una serie di azioni</mark> che si possono leggere e agire intrecciando a piacere le parole delle tre colonne verticali.
+					</p>
+					<p class="footer">1. Careri, F. (2017). Walkscapes: Walking as an aesthetic practice. Culicidae Architectural Press. p. 22</p>
+				</section>
+
+				<section>
+					<p class="content text-big">
+						Il paesaggio inteso come <mark>ar­chitettura del vuoto</mark> è un'invenzione della <mark>civiltà dell'er­ranza</mark>.
+					</p>
+					<p class="footer">1. Careri, F. (2017). Walkscapes: Walking as an aesthetic practice. Culicidae Architectural Press. p. 7</p>
+				</section>
+
+				<section>
+					<p class="content text-big">
+						È solo negli ultimi diecimila anni di vita seden­taria che si è passati dall'<mark>architettura dello spazio vuoto</mark> all'<mark>architettura dello spazio pieno</mark>.
+					</p>
+					<p class="footer">1. Careri, F. (2017). Walkscapes: Walking as an aesthetic practice. Culicidae Architectural Press. p. 7</p>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="a">
+					<p class="label">
+						Con il termine <mark>percorso</mark> si indicano
+					</p>
+					<p class="content">l'atto dell'attraversamento (il percorso come <mark>azione del camminare</mark>)</p>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="a">
+					<p class="label">
+						Con il termine <mark>percorso</mark> si indicano
+					</p>
+					<p class="content">l'atto dell'attraversamento (il percorso come <mark>azione del camminare</mark>)</p>
+					<p class="content">la linea che attraversa lo spazio (il per­corso come <mark>oggetto architettonico</mark>)</p>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="a">
+					<p class="label">
+						Con il termine <mark>percorso</mark> si indicano
+					</p>
+					<p class="content">l'atto dell'attraversamento (il percorso come <mark>azione del camminare</mark>)</p>
+					<p class="content">la linea che attraversa lo spazio (il per­corso come <mark>oggetto architettonico</mark>)</p>
+					<p class="content">il racconto dello spazio attraversato (il percorso come <mark>struttura narrati­va</mark>)</p>
+				</section>
+
+				<section>
+					<img class="stretch" src="img/walking-and-mapping.png" data-preview-image/>
+					<p class="footer">O’Rourke, K. (2016). Walking and mapping: Artists as cartographers (First MIT Press paperback edition). The MIT Press.</p>
+				</section>	
+			
+				<section>
+					<p class="content">
+						In contemporary art, a <mark>protocol</mark> is a set of rules employed by artists to create their artwork. Similarly, <mark>walking protocols</mark>, sometimes referred to as scores in the literature, help shape walks by defining how to move and what to observe.
+					</p>
+					<p class="footer">O’Rourke, K. (2016). Walking and mapping: Artists as cartographers (First MIT Press paperback edition). The MIT Press.</p>
+				</section>
+
+				<section>
+					<iframe class="stretch" data-src="https://youtu.be/kl9UiSUzcWY?si=7DWuDy1JoM74LqHW" data-preload></iframe>
+					<p class="footer">Priti Pandurangan. <a href="https://atlasofintangibles.com/">Atlas of Intangibles</a></p>
+				</section>
+
+				<section>
+					<p class="content">
+						Atlas of Intangibles is a <mark>data experience</mark> designed to highlight the rich, interconnected web of sensory information that lies beneath our everyday encounters.
+					</p>
+					<p class="footer">Priti Pandurangan. <a href="https://atlasofintangibles.com/">Atlas of Intangibles</a></p>
+				</section>
+
+				<section>
+					<img class="stretch" src="img/data-03.webp" data-preview-image/>
+					<p class="footer">Priti Pandurangan. <a href="https://atlasofintangibles.com/">Atlas of Intangibles</a></p>
+				</section>
+
+				<section>
+					<img class="stretch" src="img/data-02.webp" data-preview-image/>
+					<p class="footer">Priti Pandurangan. <a href="https://atlasofintangibles.com/">Atlas of Intangibles</a></p>
+				</section>
+
+				<section>
+					<img class="stretch" src="img/data-06.webp" data-preview-image/>
+					<p class="footer">Priti Pandurangan. <a href="https://atlasofintangibles.com/">Atlas of Intangibles</a></p>
+				</section>
+
+				<section>
+					<img class="stretch" src="img/data-07.webp" data-preview-image/>
+					<p class="footer">Priti Pandurangan. <a href="https://atlasofintangibles.com/">Atlas of Intangibles</a></p>
+				</section>
+
+				<section>
+					<img class="stretch" src="img/cm-01.webp" data-preview-image/>
+					<p class="footer">Priti Pandurangan. <a href="https://atlasofintangibles.com/">Atlas of Intangibles</a></p>
+				</section>
+
+				<section>
+					<iframe class="stretch" data-src="img/developers-guide-how-to-build-knowledge-graph.mp4" data-preload></iframe>
+					<p class="footer">Priti Pandurangan. <a href="https://atlasofintangibles.com/">Atlas of Intangibles</a></p>
+				</section>
+
+				<section data-background="img/priti-pandugaran-kit-02.jpg"></section>
+				<section data-background="img/priti-pandugaran-kit-01.jpeg"></section>
+
+				<section data-auto-animate data-auto-animate-id="a">
+					<p class="content text-big"><mark>Chi</mark> cammina?</p>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="a">
+					<p class="content text-big"><mark>Chi</mark> cammina?</p>
+					<p class="content text-big"><mark>Dove</mark> cammina?</p>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="a">
+					<p class="content text-big"><mark>Chi</mark> cammina?</p>
+					<p class="content text-big"><mark>Dove</mark> cammina?</p>
+					<p class="content text-big"><mark>Cosa</mark> osserva?</p>
+				</section>
+
+				<section data-auto-animate data-auto-animate-id="a">
+					<p class="content text-big"><mark>Chi</mark> cammina?</p>
+					<p class="content text-big"><mark>Dove</mark> cammina?</p>
+					<p class="content text-big"><mark>Cosa</mark> osserva?</p>
+					<p class="content text-big"><mark>Come registra</mark> le osservazioni?</p>
+				</section>
+			</div>
+		</div>
+
+		<script src="dist/reveal.js"></script>
+		<script src="plugin/notes/notes.js"></script>
+		<script src="plugin/markdown/markdown.js"></script>
+		<script src="plugin/highlight/highlight.js"></script>
+		<!-- aggiungere lo zoom -->
+
+		<script>
+			Reveal.initialize({
+				hash: true,
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+				width: 1920,
+  				height: 1080,
+  				margin: 0.04,
+  				minScale: 0.2,
+  				maxScale: 2.0
+			});
+		</script>
+	</body>
+</html>
